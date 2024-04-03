@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computer Networking Concepts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }		
+    </style>
+</head>
+<body>
+    <h1>Computer Networking Concepts</h1>
+
+    <h2>1. Internet Overview and Fundamentals</h2>
+    <h3>Internet Structure and Protocols</h3>
+    <ul>
+        <li>The Internet is a global network of interconnected computer networks that use the Internet Protocol (IP) to communicate with each other.</li>
+		<img src="pics/pic2.png">
+		<img src="pics/pic4.png">
+        <li>It follows a layered architecture, with each layer providing specific services and protocols. The main layers are the Application, Transport, Network, and Link layers.</li>
+        <li>Key protocols include HTTP (web), SMTP (email), FTP (file transfer), TCP (reliable transport), UDP (unreliable transport), and IP (network addressing and routing).</li>
+    </ul>
+
+    <h2>2. Network Addressing and Infrastructure</h2>
+    <h3>IPv4/IPv6</h3>
+    <ul>
+        <li>IPv4 is the most widely used IP version, using 32-bit addresses. However, due to address exhaustion as well as the desire for processing speed increase, the transition to IPv6, which uses 128-bit addresses, is underway.</li>
+		<img src="pics/pic8.png">
+		<img src="pics/pic30.png">
+        <li>IPv4 addresses are typically represented in dot-decimal notation (e.g., 192.168.0.1), while IPv6 addresses use hexadecimal notation (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334).</li>
+		<img src="pics/pic6.png">
+		<img src="pics/pic7.png">
+    </ul>
+    <h3>Network Address Translation (NAT)</h3>
+    <ul>
+        <li>NAT allows multiple devices in a private network to share a single public IP address, conserving the limited IPv4 address space.</li>
+		<img src="pics/pic23.png">
+        <li>It translates private IP addresses to public IP addresses and vice versa, enabling communication between devices in different networks.</li>
+		<img src="pics/pic27.png">
+    </ul>
+    <h3>Dynamic Host Configuration Protocol (DHCP)</h3>
+    <ul>
+        <li>DHCP automates the assignment of IP addresses, subnet masks, default gateways, and other network configuration parameters to devices on a network.</li>
+		<img src="pics/pic51.png">
+        <li>It reduces the administrative burden and ensures that devices receive unique, valid IP addresses.</li>
+		<img src="pics/pic54.png">
+		<img src="pics/pic55.png">
+    </ul>
+    <h3>Address Resolution Protocol (ARP)</h3>
+    <ul>
+        <li>ARP is used to map IP addresses to MAC addresses within a local network segment.</li>
+		<img src="pics/pic42.png">
+        <li>When a device needs to communicate with another device on the same network, it broadcasts an ARP request to find the corresponding MAC address.</li>
+		<img src="pics/pic43.png">
+		<img src="pics/pic44.png">
+		<img src="pics/pic45.png">
+    </ul>
+
+    <h2>3. Transport Layer Protocols</h2>
+    <h3>User Datagram Protocol (UDP)</h3>
+    <ul>
+        <li>UDP is a lightweight, connectionless protocol that provides unreliable, best-effort datagram delivery.</li>
+        <li>It doesn't guarantee packet delivery, ordering, or duplicate protection, making it suitable for applications that can tolerate some data loss (e.g., streaming media, DNS).</li>
+    </ul>
+    <h3>Transmission Control Protocol (TCP)</h3>
+    <ul>
+        <li>TCP is a connection-oriented protocol that provides reliable, ordered, and error-checked byte stream delivery.</li>
+        <li>It establishes a virtual connection between the sender and receiver, ensuring that data is delivered accurately and in the correct order.</li>
+        <li>TCP uses mechanisms like sequence numbers, acknowledgments, and retransmissions to achieve reliability.</li>
+		<img src="pics/pic84.png">
+		<img src="pics/pic85.png">
+		<img src="pics/pic86.png">
+    </ul>
+
+    <h2>4. Network Application Development</h2>
+    <h3>Socket Programming</h3>
+    <ul>
+		<img src="pics/pic88.png">
+        <li>Sockets provide an interface for network communication between processes, allowing applications to send and receive data over the network.</li>
+        <li>Socket programming involves creating, binding, listening, accepting, and managing socket connections using APIs provided by the operating system.</li>
+        <li>Key socket functions include socket(), bind(), listen(), accept(), connect(), send(), recv(), and close().</li>
+		<img src="pics/pic89.png">
+		<img src="pics/pic92.png">
+		<img src="pics/pic93.png">
+		<img src="pics/pic96.png">
+		<img src="pics/pic100.png">
+		<img src="pics/pic102.png">
+    </ul>
+    <h3>Application Protocols</h3>
+    <ul>
+		<img src="pics/pic81.png">
+        <li>Application protocols define the rules and formats for data exchange between applications running on different hosts.</li>
+        <li>Examples include HTTP (web), SMTP (email), FTP (file transfer), SSH (secure shell), and DNS (domain name resolution).</li>
+        <li>These protocols typically operate on top of transport layer protocols like TCP or UDP.</li>
+		<img src="pics/pic82.png">
+    </ul>
+
+    <h2>5. Congestion Control and Resource Allocation</h2>
+    <h3>TCP Congestion Control Mechanisms</h3>
+    <ul>
+        <li>TCP uses various congestion control mechanisms to prevent network congestion and ensure fair resource allocation among competing flows.</li>
+        <li>Key mechanisms include:
+            <ul>
+                <li>Slow Start: Gradually increases the congestion window (cwnd) to probe the network's capacity.</li>
+                <li>Congestion Avoidance: Additively increases cwnd until congestion is detected, then multiplicatively decreases it (AIMD).</li>
+                <li>Fast Retransmit: Quickly retransmits a lost segment based on duplicate acknowledgments.</li>
+                <li>Fast Recovery: Avoids slow start after a single packet loss, allowing the sender to continue transmitting at a reduced rate.</li>
+            </ul>
+        </li>
+        <li>Advanced congestion control algorithms like TCP CUBIC and TCP BBR have been developed to improve performance in high-bandwidth, high-latency networks.</li>
+    </ul>
+
+    <h2>6. Advanced Networking Concepts</h2>
+    <h3>Switching</h3>
+    <ul>
+        <li>Switching is the process of forwarding packets between network segments based on their destination MAC or IP addresses.</li>
+        <li>Switches operate at the data link layer (Layer 2) and use MAC address tables to make forwarding decisions.</li>
+        <li>They provide improved performance, security, and bandwidth utilization compared to hubs, which broadcast packets to all connected devices.</li>
+    </ul>
+    <h3>Routing</h3>
+    <ul>
+        <li>Routing is the process of forwarding packets between different networks based on their destination IP addresses.</li>
+        <li>Routers operate at the network layer (Layer 3) and use routing tables and protocols to determine the best path for packet forwarding.</li>
+        <li>Common routing protocols include RIP, OSPF, EIGRP, and BGP, which exchange routing information and calculate optimal paths.</li>
+    </ul>
+    <h3>Internetworking</h3>
+    <ul>
+        <li>Internetworking refers to the interconnection of multiple networks to form a larger, heterogeneous network.</li>
+        <li>It involves the use of routers, gateways, and other internetworking devices to enable communication between devices on different networks.</li>
+        <li>Internetworking allows for the creation of large-scale, global networks like the Internet, enabling seamless communication across diverse network technologies and protocols.</li>
+    </ul>
+
+    <h2>Socket Programming in C</h2>
+    <ul>
+        <li>Socket programming in C involves using the Berkeley sockets API to create network applications.</li>
+        <li>Key functions and concepts include:
+            <ul>
+                <li>socket(): Creates a new socket of a specific type (e.g., SOCK_STREAM for TCP, SOCK_DGRAM for UDP) and returns a socket descriptor.</li>
+                <li>bind(): Associates a socket with a specific IP address and port number.</li>
+                <li>listen(): Marks a socket as a passive socket, ready to accept incoming connections.</li>
+                <li>accept(): Accepts an incoming connection on a listening socket and returns a new socket descriptor for the established connection.</li>
+                <li>connect(): Initiates a connection to a remote socket.</li>
+                <li>send()/recv(): Sends and receives data over a connected socket.</li>
+                <li>close(): Closes a socket descriptor and terminates the connection.</li>
+            </ul>
+        </li>
+        <li>Socket programming requires understanding of network byte ordering (big-endian vs little-endian), data serialization, and error handling.</li>
+		<img src="pics/pic104.png">
+		<img src="pics/pic106.png">
+		<img src="pics/pic107.png">
+		<img src="pics/pic108.png">
+    </ul>
+
+    <h2>Detailed Outline for Congestion Control and Reliable Data Transfer Mechanisms</h2>
+    <h3>1. Congestion Control Mechanisms</h3>
+    <h4>AIMD (Additive Increase/Multiplicative Decrease)</h4>
+    <ul>
+        <li>AIMD is a core principle of TCP's congestion control mechanism.</li>
+        <li>It balances aggressive bandwidth utilization with conservative reductions upon congestion detection.</li>
+        <li>The congestion window size increases additively for each ACK received in the congestion avoidance phase and reduces multiplicatively when a loss is detected.</li>
+        <li>AIMD ensures fair bandwidth distribution among flows and maintains network stability.</li>
+    </ul>
+    <h4>Slow Start</h4>
+    <ul>
+        <li>Slow start is a phase of TCP's congestion control mechanism used at the beginning of a connection or after a timeout.</li>
+        <li>It exponentially increases the congestion window size to quickly find the network's capacity.</li>
+        <li>The window size doubles each RTT until a threshold is reached or packet loss occurs.</li>
+        <li>After reaching the threshold, TCP transitions to the congestion avoidance phase and switches to AIMD for congestion window growth.</li>
+    </ul>
+    <h4>TCP CUBIC</h4>
+    <ul>
+        <li>TCP CUBIC is a variant of TCP's congestion control that uses a cubic function to adjust the congestion window after experiencing packet loss.</li>
+        <li>It aims to improve performance over long-distance links with high bandwidth-delay products and high loss rates.</li>
+        <li>CUBIC differs from AIMD by focusing on improving throughput in networks with specific characteristics.</li>
+    </ul>
+
+    <h3>2. Reliable Data Transfer Protocols</h3>
+    <h4>Go-Back-N (GBN)</h4>
+    <ul>
+        <li>GBN is a sliding window protocol that allows for sending multiple frames before receiving acknowledgments.</li>
+        <li>It requires all frames after a lost frame to be retransmitted.</li>
+        <li>GBN defines a window of outstanding unacknowledged frames and has simplicity in sender and receiver logic.</li>
+        <li>However, it can be inefficient in high-latency networks due to the potential for large-scale retransmissions.</li>
+    </ul>
+    <h4>Selective Repeat (SR)</h4>
+    <ul>
+        <li>SR is an enhancement over GBN, allowing the receiver to accept and acknowledge out-of-order frames.</li>
+        <li>It doesn't require the sender to retransmit correctly received frames that follow a lost one.</li>
+        <li>SR maintains a window of frames that can be sent and individually acknowledged, reducing unnecessary retransmissions.</li>
+        <li>However, it requires more sophisticated sender and receiver logic to manage out-of-order frames.</li>
+    </ul>
+
+    <h3>3. TCP Specific Mechanisms</h3>
+    <h4>Triple Duplicate ACKs (Triple NAKs)</h4>
+    <ul>
+        <li>Triple duplicate ACKs are a signal used by TCP to trigger fast retransmit, indicating that a segment has likely been lost.</li>
+        <li>If the sender receives three duplicate ACKs for the same data, it retransmits the segment before the timeout occurs.</li>
+        <li>This mechanism allows for quicker recovery from packet loss without waiting for a timeout.</li>
+    </ul>
+    <h4>TCP Fast Retransmit</h4>
+    <ul>
+        <li>Fast retransmit is a mechanism to quickly recover from single segment losses without waiting for a full timeout period.</li>
+        <li>It is complemented by the Fast Recovery mechanism.</li>
+        <li>Fast retransmit is triggered upon receiving triple duplicate ACKs, causing the sender to retransmit the missing segment immediately.</li>
+    </ul>
+    <h4>Pipelining</h4>
+    <ul>
+        <li>Pipelining refers to sending multiple segments back-to-back without waiting for acknowledgments for each segment.</li>
+        <li>It is utilized in both GBN and SR protocols.</li>
+        <li>Pipelining increases the utilization of network capacity by keeping the pipe full.</li>
+        <li>However, it requires effective management to prevent sender or receiver buffer overflow and to handle out-of-order delivery efficiently.</li>
+    </ul>
+
+    <h2>Further Study?</h2>
+    <ul>
+		<li>
+			<a href="https://jhalon.github.io/reverse-engineering-protocols/">Reverse Engineering Network Protocols</a>
+		</li>
+        <li>Comparison Tables for the differences, advantages, and appropriate use cases between Go-Back-N and Selective Repeat, or between AIMD and TCP CUBIC:</li>
+		<table>
+			<tr>
+				<th>Feature</th>
+				<th>Go-Back-N</th>
+				<th>Selective Repeat</th>
+			</tr>
+			<tr>
+				<td>Retransmission Strategy</td>
+				<td>Retransmits all packets from the lost or damaged packet onwards</td>
+				<td>Retransmits only the lost or damaged packet</td>
+			</tr>
+			<tr>
+				<td>Buffering Requirements</td>
+				<td>Receiver does not need to buffer out-of-order packets</td>
+				<td>Receiver must buffer out-of-order packets</td>
+			</tr>
+			<tr>
+				<td>Bandwidth Utilization</td>
+				<td>Less efficient due to retransmission of potentially successfully delivered packets</td>
+				<td>More efficient as it only retransmits lost or damaged packets</td>
+			</tr>
+			<tr>
+				<td>Simplicity</td>
+				<td>Simpler to implement</td>
+				<td>More complex to implement</td>
+			</tr>
+			<tr>
+				<td>Latency</td>
+				<td>Higher latency due to retransmission of multiple packets</td>
+				<td>Lower latency as only specific packets are retransmitted</td>
+			</tr>
+			<tr>
+				<td>Appropriate Use Cases</td>
+				<td>Networks with low error rates and simple receiver implementations</td>
+				<td>Networks with higher error rates and more advanced receivers capable of buffering out-of-order packets</td>
+			</tr>
+		</table>
+
+		<h2>AIMD vs. TCP CUBIC</h2>
+		<table>
+			<tr>
+				<th>Feature</th>
+				<th>AIMD (Additive Increase Multiplicative Decrease)</th>
+				<th>TCP CUBIC</th>
+			</tr>
+			<tr>
+				<td>Congestion Window Adjustment</td>
+				<td>Increases window size linearly and decreases it by half upon congestion</td>
+				<td>Uses a cubic function to adjust the window size based on the time since the last congestion event</td>
+			</tr>
+			<tr>
+				<td>Fairness</td>
+				<td>Ensures fairness among competing flows</td>
+				<td>May not be as fair to competing flows, especially in high-speed networks</td>
+			</tr>
+			<tr>
+				<td>Bandwidth Utilization</td>
+				<td>May not fully utilize available bandwidth in high-speed networks</td>
+				<td>Better utilizes available bandwidth in high-speed networks</td>
+			</tr>
+			<tr>
+				<td>Reaction to Congestion</td>
+				<td>Responds quickly to congestion by halving the window size</td>
+				<td>Responds more gradually to congestion, allowing for better utilization of available bandwidth</td>
+			</tr>
+			<tr>
+				<td>Appropriate Use Cases</td>
+				<td>Networks with lower bandwidth-delay products and competing flows requiring fairness</td>
+				<td>High-speed networks with large bandwidth-delay products and a need for better bandwidth utilization</td>
+			</tr>
+		</table> 
+    </ul>
+</body>
+</html>
+</html>
